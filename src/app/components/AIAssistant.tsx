@@ -125,7 +125,7 @@ export default function AIAssistant() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-deep-charcoal">SGA AI Sales Assistant</h4>
-                  <span className="text-[10px] text-neutral-grey font-semibold uppercase tracking-wider">Powered by Gemini • Online</span>
+                  {/* <span className="text-[10px] text-neutral-grey font-semibold uppercase tracking-wider">Powered by Gemini • Online</span> */}
                 </div>
               </div>
               <button
