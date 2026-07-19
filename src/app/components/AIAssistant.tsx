@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { MessageSquare, X, Send, User, Bot, Loader2, PhoneCall } from "lucide-react";
+import { MessageSquare, X, Send, User, Bot, Loader2, PhoneCall, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -115,24 +115,24 @@ export default function AIAssistant() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       
-      {/* Floating Action Trigger Bubble */}
-      <button
-        onClick={handleToggle}
-        className={`p-4 rounded-full shadow-2xl text-white transition-all duration-300 relative flex items-center justify-center hover:scale-105 active:scale-95 ${
-          isOpen ? "bg-slate-100 text-deep-charcoal border border-slate-200" : "bg-tata-teal"
-        }`}
-        aria-label="Ask AI Assistant"
-      >
-        {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
-        
-        {/* Unread indicator */}
-        {unread && !isOpen && (
-          <span className="absolute -top-1 -right-1 flex h-4 w-4">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-red opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-accent-red"></span>
-          </span>
-        )}
-      </button>
+      {/* Floating Action Trigger (Circular Icon Only) */}
+      {!isOpen && (
+        <button
+          onClick={handleToggle}
+          className="w-14 h-14 rounded-full bg-[#2D509F] hover:bg-[#1e3a75] text-white flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 relative select-none"
+          aria-label="Open sales assistant"
+        >
+          <Bot className="w-7 h-7" />
+          
+          {/* Unread indicator */}
+          {unread && (
+            <span className="absolute top-0 right-0 flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00A499] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#00A499]"></span>
+            </span>
+          )}
+        </button>
+      )}
 
       {/* Expandable Chat window */}
       <AnimatePresence>
@@ -142,7 +142,7 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="w-[90vw] sm:w-[380px] h-[500px] glassmorphism rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col justify-between mb-4 bg-white"
+            className="w-[90vw] sm:w-[380px] h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col justify-between mb-4 bg-white"
           >
             {/* Header */}
             <div className="bg-slate-50 border-b border-slate-200/60 px-6 py-4 flex items-center justify-between">

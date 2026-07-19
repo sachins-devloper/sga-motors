@@ -2,13 +2,14 @@
 
 @theme {
   --color-deep-charcoal: #0B0D12;
-  --color-accent-red: #E63946;
+  --color-accent-red: #2D509F;
   --color-tata-teal: #00A499;
   --color-light-grey: #F3F4F6;
   --color-neutral-grey: #4B5563;
   
   --font-sans: var(--font-inter), sans-serif;
   --font-display: var(--font-space-grotesk), sans-serif;
+  --font-caveat: var(--font-caveat), cursive;
 }
 
 :root {
@@ -69,7 +70,7 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E63946;
+  background: #2D509F;
 }
 
 /* Chrome/Safari utility for hidescroll */

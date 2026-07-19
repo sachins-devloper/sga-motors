@@ -30,7 +30,7 @@ export default function ServiceBooking() {
       particleCount: 80,
       spread: 60,
       origin: { y: 0.7 },
-      colors: ["#00A499", "#E63946", "#FFFFFF"],
+      colors: ["#00A499", "#2D509F", "#FFFFFF"],
     });
 
     setBookSubmitted(true);

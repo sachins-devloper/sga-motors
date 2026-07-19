@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import VehicleShowcase from "./components/VehicleShowcase";
@@ -11,8 +12,61 @@ import TradeIn from "./components/TradeIn";
 import Showrooms from "./components/Showrooms";
 import ServiceBooking from "./components/ServiceBooking";
 import AIAssistant from "./components/AIAssistant";
-import { Star, ShieldAlert, Award, Sparkles, Send, MapPin, Phone } from "lucide-react";
+import { 
+  Star, 
+  Award, 
+  Sparkles, 
+  Send, 
+  MapPin, 
+  Phone, 
+  ArrowLeftRight, 
+  Calculator, 
+  RefreshCw, 
+  Tag, 
+  Wrench, 
+  ChevronRight,
+  Car,
+  Building2,
+  Users,
+  ShieldCheck
+} from "lucide-react";
 import confetti from "canvas-confetti";
+
+interface CounterProps {
+  end: number;
+  duration?: number;
+  suffix?: string;
+  decimals?: number;
+}
+
+function Counter({ end, duration = 2000, suffix = "", decimals = 0 }: CounterProps) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTime: number | null = null;
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const progressPercentage = Math.min(progress / duration, 1);
+      const currentCount = progressPercentage * end;
+      setCount(currentCount);
+
+      if (progressPercentage < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+    requestAnimationFrame(animate);
+  }, [end, duration]);
+
+  return (
+    <span>
+      {decimals > 0 
+        ? count.toFixed(decimals) 
+        : Math.floor(count).toLocaleString('en-IN')}
+      {suffix}
+    </span>
+  );
+}
 
 export default function Home() {
   const [selectedCompareIds, setSelectedCompareIds] = useState<string[]>([]);
@@ -56,7 +110,7 @@ export default function Home() {
       particleCount: 100,
       spread: 70,
       origin: { y: 0.8 },
-      colors: ["#00A499", "#E63946", "#FFFFFF"],
+      colors: ["#00A499", "#2D509F", "#FFFFFF"],
     });
 
     setBookSuccess(true);
@@ -85,6 +139,173 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
+      {/* Unified section (rendered below the Hero section) */}
+      <section className="relative z-20 mt-8 md:mt-12 max-w-7xl mx-auto px-6 mb-12 space-y-6">
+        
+        {/* Statistics Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="bg-[#1F2937] rounded-3xl p-6 md:p-8 shadow-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+        >
+          {/* Stat 1 */}
+          <div className="flex items-center gap-4">
+            <Building2 className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+                <Counter end={15} suffix="+" />
+              </h3>
+              <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Showrooms</p>
+              <span className="text-[9px] text-neutral-grey/90 font-semibold leading-none">Across South India</span>
+            </div>
+          </div>
+
+          {/* Stat 2 */}
+          <div className="flex items-center gap-4">
+            <Users className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+                <Counter end={100000} suffix="+" />
+              </h3>
+              <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Happy Customers</p>
+              <span className="text-[9px] text-neutral-grey/90 font-semibold leading-none">And Growing</span>
+            </div>
+          </div>
+
+          {/* Stat 3 */}
+          <div className="flex items-center gap-4">
+            <Star className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+                <Counter end={4.8} decimals={1} suffix="/5" />
+              </h3>
+              <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Google Rating</p>
+              <span className="text-[9px] text-neutral-grey/90 font-semibold leading-none">From 5K+ Reviews</span>
+            </div>
+          </div>
+
+          {/* Stat 4 */}
+          <div className="flex items-center gap-4">
+            <ShieldCheck className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+                <Counter end={25} suffix="+" />
+              </h3>
+              <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Years of Trust</p>
+              <span className="text-[9px] text-neutral-grey/90 font-semibold leading-none">Driven by Values</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Quick Link Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+          
+          {/* Card 1: Compare */}
+          <a
+            href="#compare"
+            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+          >
+            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+              <Car className="w-5 h-5" />
+            </div>
+            <div className="flex-grow min-w-0 pr-5">
+              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Compare</h4>
+              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Compare models side by side</p>
+            </div>
+            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+              <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Card 2: EMI Calculator */}
+          <a
+            href="#finance"
+            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+          >
+            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+              <Calculator className="w-5 h-5" />
+            </div>
+            <div className="flex-grow min-w-0 pr-5">
+              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">EMI Calculator</h4>
+              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Calculate your perfect EMI</p>
+            </div>
+            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+              <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Card 3: Exchange */}
+          <a
+            href="#trade-in"
+            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+          >
+            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+              <ArrowLeftRight className="w-5 h-5" />
+            </div>
+            <div className="flex-grow min-w-0 pr-5">
+              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Exchange</h4>
+              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Get best value for your car</p>
+            </div>
+            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+              <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Card 4: Latest Offers */}
+          <a
+            href="#offers"
+            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+          >
+            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+              <Tag className="w-5 h-5" />
+            </div>
+            <div className="flex-grow min-w-0 pr-5">
+              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Latest Offers</h4>
+              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Check now for exciting deals</p>
+            </div>
+            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+              <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Card 5: Book Service */}
+          <a
+            href="#service"
+            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+          >
+            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+              <Wrench className="w-5 h-5" />
+            </div>
+            <div className="flex-grow min-w-0 pr-5">
+              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Book Service</h4>
+              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Hassle-free service booking</p>
+            </div>
+            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+              <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Card 6: Find Showroom */}
+          <a
+            href="#showrooms"
+            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+          >
+            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+              <MapPin className="w-5 h-5" />
+            </div>
+            <div className="flex-grow min-w-0 pr-5">
+              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Find Showroom</h4>
+              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Locate nearest SGA showroom</p>
+            </div>
+            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+              <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+        </div>
+      </section>
+
       {/* Vehicle Showcase */}
       <VehicleShowcase
         selectedCars={selectedCompareIds}
@@ -101,7 +322,7 @@ export default function Home() {
         onBookClick={handleBookClick}
       />
 
-      {/* Book Test Drive Section */}
+      {/* Book Test Drive Form Section */}
       <section id="book" ref={bookingFormRef} className="py-24 bg-white border-t border-slate-100 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -207,7 +428,7 @@ export default function Home() {
 
                     <button
                       type="submit"
-                      className="w-full bg-accent-red hover:bg-accent-red/90 text-white font-semibold py-4 rounded-xl transition-all duration-300 text-xs shadow-lg shadow-accent-red/20 mt-4"
+                      className="w-full bg-accent-red hover:bg-accent-red/90 text-white font-semibold py-4 rounded-xl transition-all duration-300 text-xs shadow-lg shadow-accent-red/25 mt-4"
                     >
                       Book Now
                     </button>
