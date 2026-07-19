@@ -46,15 +46,15 @@ export default function FinanceCalculator() {
   };
 
   return (
-    <section id="finance" className="py-24 bg-slate-50 border-t border-slate-100 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="finance" className="py-16 md:py-24 bg-slate-50 border-t border-slate-100 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block mb-3">
             Plan Your Purchase
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-4 md:mb-6">
             Finance Calculator
           </h2>
           <p className="text-neutral-grey text-base">
@@ -66,7 +66,7 @@ export default function FinanceCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Sliders Area (7 columns) */}
-          <div className="lg:col-span-7 glassmorphism rounded-3xl p-6 md:p-8 space-y-8 flex flex-col justify-between bg-white border border-slate-200">
+          <div className="lg:col-span-7 glassmorphism rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 space-y-6 sm:space-y-8 flex flex-col justify-between bg-white border border-slate-200">
             
             {/* Vehicle Price */}
             <div>
@@ -167,11 +167,11 @@ export default function FinanceCalculator() {
           </div>
 
           {/* Results Summary Box (5 columns) */}
-          <div className="lg:col-span-5 flex flex-col justify-between glassmorphism rounded-3xl p-6 md:p-8 bg-white border border-slate-200 shadow-sm">
+          <div className="lg:col-span-5 flex flex-col justify-between glassmorphism rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 bg-white border border-slate-200 shadow-sm">
             
             <div className="text-center pt-4">
               <span className="text-neutral-grey text-xs uppercase tracking-widest font-bold block mb-2">Estimated Monthly Payment</span>
-              <h3 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-2">
+              <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-2">
                 {formatCurrency(emi)}
               </h3>
               <p className="text-tata-teal text-xs font-bold uppercase tracking-wider">Per Month EMI</p>
@@ -227,10 +227,10 @@ export default function FinanceCalculator() {
             {/* Actions */}
             <button
               onClick={handlePreQualify}
-              className="w-full flex items-center justify-center gap-2 bg-tata-teal hover:bg-tata-teal/90 text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-md shadow-tata-teal/10"
+              className="w-full flex items-center justify-center bg-tata-teal hover:bg-tata-teal/90 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-md shadow-tata-teal/10 text-xs sm:text-sm relative"
             >
               <span>Get Finance Pre-Qualification</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2" />
             </button>
 
           </div>

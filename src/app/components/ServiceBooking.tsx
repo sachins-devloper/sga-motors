@@ -44,15 +44,15 @@ export default function ServiceBooking() {
   };
 
   return (
-    <section id="service" className="py-24 bg-white border-t border-slate-100 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="service" className="py-16 md:py-24 bg-white border-t border-slate-100 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Title */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block mb-3">
             Owning Made Seamless
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-4 md:mb-6">
             Service Booking
           </h2>
           <p className="text-neutral-grey text-base">
@@ -61,16 +61,16 @@ export default function ServiceBooking() {
         </div>
 
         {/* Dashboard Frame */}
-        <div className="max-w-4xl mx-auto glassmorphism rounded-3xl overflow-hidden shadow-md flex flex-col md:flex-row items-stretch bg-white border border-slate-200">
+        <div className="max-w-4xl mx-auto glassmorphism rounded-2xl sm:rounded-3xl overflow-hidden shadow-md flex flex-col md:flex-row items-stretch bg-white border border-slate-200">
           
           {/* Left Navigation bar (tabs) */}
-          <div className="md:w-1/3 bg-slate-50 border-b md:border-b-0 md:border-r border-slate-200 p-6 flex flex-row md:flex-col gap-2 justify-between md:justify-start">
+          <div className="md:w-1/3 bg-slate-50 border-b md:border-b-0 md:border-r border-slate-200 p-4 sm:p-6 flex flex-row md:flex-col gap-2 justify-between md:justify-start">
             <button
               onClick={() => {
                 setActiveTab("book");
                 setBookSubmitted(false);
               }}
-              className={`flex-1 md:flex-initial flex items-center justify-center md:justify-start gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              className={`flex-1 md:flex-initial flex items-center justify-center md:justify-start gap-2.5 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeTab === "book" ? "bg-tata-teal text-white shadow-sm" : "text-neutral-grey hover:bg-slate-100 hover:text-deep-charcoal"
               }`}
             >
@@ -80,7 +80,7 @@ export default function ServiceBooking() {
 
             <button
               onClick={() => setActiveTab("track")}
-              className={`flex-1 md:flex-initial flex items-center justify-center md:justify-start gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              className={`flex-1 md:flex-initial flex items-center justify-center md:justify-start gap-2.5 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeTab === "track" ? "bg-tata-teal text-white shadow-sm" : "text-neutral-grey hover:bg-slate-100 hover:text-deep-charcoal"
               }`}
             >
@@ -90,7 +90,7 @@ export default function ServiceBooking() {
 
             <button
               onClick={() => setActiveTab("sos")}
-              className={`flex-1 md:flex-initial flex items-center justify-center md:justify-start gap-3 px-4 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              className={`flex-1 md:flex-initial flex items-center justify-center md:justify-start gap-2.5 sm:gap-3 px-3 py-2.5 sm:px-4 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeTab === "sos" ? "bg-accent-red text-white shadow-lg shadow-accent-red/10" : "text-neutral-grey hover:bg-slate-100 hover:text-deep-charcoal"
               }`}
             >
@@ -100,7 +100,7 @@ export default function ServiceBooking() {
           </div>
 
           {/* Right Panel Container */}
-          <div className="md:w-2/3 p-8 flex flex-col justify-center bg-white">
+          <div className="md:w-2/3 p-5 sm:p-8 flex flex-col justify-center bg-white">
             
             {/* BOOK SERVICE TAB */}
             {activeTab === "book" && !bookSubmitted && (

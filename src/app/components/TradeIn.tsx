@@ -69,15 +69,15 @@ export default function TradeIn() {
   };
 
   return (
-    <section id="trade-in" className="py-24 bg-white border-t border-slate-100 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="trade-in" className="py-16 md:py-24 bg-white border-t border-slate-100 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block mb-3">
             Upgrade Today
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-4 md:mb-6">
             Sell Your Old Car
           </h2>
           <p className="text-neutral-grey text-base">
@@ -86,10 +86,10 @@ export default function TradeIn() {
         </div>
 
         {/* Wizard Container */}
-        <div className="max-w-2xl mx-auto glassmorphism rounded-3xl overflow-hidden p-8 md:p-10 relative bg-white border border-slate-200 shadow-md">
+        <div className="max-w-2xl mx-auto glassmorphism rounded-2xl sm:rounded-3xl overflow-hidden p-5 sm:p-8 md:p-10 relative bg-white border border-slate-200 shadow-md">
           
           {/* Steps Indicator */}
-          <div className="flex justify-between items-center mb-10 border-b border-slate-100 pb-6">
+          <div className="flex justify-between items-center mb-8 border-b border-slate-100 pb-5">
             <span className="text-xs uppercase tracking-wider text-neutral-grey font-bold">
               Step {step} of 3
             </span>
@@ -183,13 +183,13 @@ export default function TradeIn() {
               >
                 <div>
                   <label className="text-deep-charcoal text-xs font-semibold mb-3 block">Overall Vehicle Condition</label>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4">
                     {(["excellent", "good", "fair"] as const).map((cond) => (
                       <button
                         key={cond}
                         type="button"
                         onClick={() => setCondition(cond)}
-                        className={`py-3.5 px-4 rounded-xl border text-xs uppercase font-bold tracking-wider transition-all duration-300 ${
+                        className={`py-2 px-1 sm:py-3.5 sm:px-4 rounded-xl border text-[10px] sm:text-xs uppercase font-bold tracking-wider transition-all duration-300 ${
                           condition === cond
                             ? "bg-tata-teal/10 border-tata-teal text-tata-teal font-bold"
                             : "bg-transparent border-slate-200 text-neutral-grey hover:border-slate-350"

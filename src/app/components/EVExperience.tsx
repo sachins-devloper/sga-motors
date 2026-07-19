@@ -135,18 +135,18 @@ export default function EVExperience() {
   const ActiveIcon = activeFeature.icon;
 
   return (
-    <section id="ev-experience" className="py-24 bg-[#F8FAFC] border-t border-slate-100 relative overflow-hidden">
+    <section id="ev-experience" className="py-16 md:py-24 bg-[#F8FAFC] border-t border-slate-100 relative overflow-hidden">
       {/* Decorative BG light */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#00A499]/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Title Badge & Headers */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <div className="inline-flex items-center border border-[#00A499]/30 bg-[#00A499]/5 text-[#00A499] px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
             Why Choose Tata EV?
           </div>
-          <h2 className="font-display text-4xl md:text-5xl font-extrabold text-deep-charcoal tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold text-deep-charcoal tracking-tight mb-4 md:mb-6">
             The Electric <span className="text-[#00A499]">Experience</span>
           </h2>
           <p className="text-neutral-grey text-sm md:text-base leading-relaxed font-semibold">
@@ -157,8 +157,9 @@ export default function EVExperience() {
         {/* Dynamic Showcase Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
-          {/* Left Selection Menu (4 columns) */}
-          <div className="lg:col-span-4 flex flex-col justify-between gap-3">
+          {/* Left Selection Menu - horizontal scroll on mobile, vertical on desktop */}
+          <div className="lg:col-span-4">
+            <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 no-scrollbar">
             {evFeatures.map((feat) => {
               const Icon = feat.icon;
               const isActive = feat.id === activeTab;
@@ -167,15 +168,15 @@ export default function EVExperience() {
                 <button
                   key={feat.id}
                   onClick={() => setActiveTab(feat.id)}
-                  className={`w-full text-left p-4 rounded-2xl flex items-center justify-between gap-4 border transition-all duration-300 ${
+                  className={`w-[260px] lg:w-full flex-shrink-0 text-left p-3 lg:p-4 rounded-2xl flex items-center justify-between gap-3 lg:gap-4 border transition-all duration-300 ${
                     isActive
                       ? "bg-white border-[#00A499] shadow-lg shadow-slate-100"
                       : "bg-white/60 border-slate-100 hover:bg-white hover:border-slate-200/50"
                   }`}
                 >
-                  <div className="flex items-center gap-4 flex-grow">
+                  <div className="flex items-center gap-3 lg:gap-4 flex-grow">
                     <div
-                      className={`p-3 rounded-xl flex-shrink-0 transition-all duration-300 ${
+                      className={`p-2.5 lg:p-3 rounded-xl flex-shrink-0 transition-all duration-300 ${
                         isActive ? "bg-[#005F56] text-white" : "bg-slate-50 border border-slate-100 text-neutral-grey"
                       }`}
                     >
@@ -198,11 +199,12 @@ export default function EVExperience() {
                 </button>
               );
             })}
+            </div>
           </div>
 
           {/* Right Detailed Card (8 columns) */}
           <div className="lg:col-span-8">
-            <div className="rounded-3xl p-6 md:p-8 h-full flex flex-col justify-between relative overflow-hidden bg-white shadow-xl border border-slate-150">
+            <div className="rounded-3xl p-5 sm:p-6 md:p-8 h-full flex flex-col justify-between relative overflow-hidden bg-white shadow-xl border border-slate-150">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeFeature.id}
@@ -270,7 +272,7 @@ export default function EVExperience() {
                   </div>
 
                   {/* Bottom Stats Grid */}
-                  <div className="grid grid-cols-3 gap-4 border-t border-slate-100 pt-6 mt-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 border-t border-slate-100 pt-4 sm:pt-6 mt-6 sm:mt-8">
                     {activeFeature.stats.map((st, idx) => {
                       const StatIcon = st.icon;
                       return (
@@ -299,7 +301,7 @@ export default function EVExperience() {
         </div>
 
         {/* Bottom Horizontal Features Bar */}
-        <div className="mt-16 bg-white border border-slate-200/60 p-6 rounded-3xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 shadow-sm">
+        <div className="mt-10 md:mt-16 bg-white border border-slate-200/60 p-5 sm:p-6 rounded-3xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-4 shadow-sm">
           {[
             {
               icon: VolumeX,

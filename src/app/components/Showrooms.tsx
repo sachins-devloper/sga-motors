@@ -83,15 +83,15 @@ export default function Showrooms({ onBookClick }: ShowroomsProps) {
   const activeShowroom = showroomsData.find((s) => s.id === activeId) || showroomsData[0];
 
   return (
-    <section id="showrooms" className="py-24 bg-slate-50 border-t border-slate-100 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="showrooms" className="py-16 md:py-24 bg-slate-50 border-t border-slate-100 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block mb-3">
             Visit Us Nearby
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-4 md:mb-6">
             Our Showrooms
           </h2>
           <p className="text-neutral-grey text-base">
@@ -111,7 +111,7 @@ export default function Showrooms({ onBookClick }: ShowroomsProps) {
                 <button
                   key={s.id}
                   onClick={() => setActiveId(s.id)}
-                  className={`px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${
+                  className={`px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${
                     activeId === s.id
                       ? "bg-deep-charcoal border-deep-charcoal text-white shadow-md font-bold"
                       : "bg-white border-slate-200 text-neutral-grey hover:bg-slate-100 hover:text-deep-charcoal"
@@ -121,9 +121,9 @@ export default function Showrooms({ onBookClick }: ShowroomsProps) {
                 </button>
               ))}
             </div>
-
+ 
             {/* Selected Showroom Detail Box */}
-            <div className="glassmorphism rounded-3xl p-6 md:p-8 flex-grow flex flex-col justify-between bg-white border border-slate-200 shadow-sm">
+            <div className="glassmorphism rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 flex-grow flex flex-col justify-between bg-white border border-slate-200 shadow-sm">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeShowroom.id}
@@ -207,7 +207,7 @@ export default function Showrooms({ onBookClick }: ShowroomsProps) {
 
           {/* Interactive Map Visual (5 columns) */}
           <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-0">
-            <div className="glassmorphism rounded-3xl overflow-hidden h-full w-full relative flex flex-col justify-between p-6 bg-white border border-slate-200 shadow-sm">
+            <div className="glassmorphism rounded-2xl sm:rounded-3xl overflow-hidden h-full w-full relative flex flex-col justify-between p-6 bg-white border border-slate-200 shadow-sm">
               
               {/* Map Title Tag */}
               <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm">

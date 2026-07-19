@@ -140,20 +140,20 @@ export default function Home() {
       <Hero />
 
       {/* Unified section (rendered below the Hero section) */}
-      <section className="relative z-20 mt-8 md:mt-12 max-w-7xl mx-auto px-6 mb-12 space-y-6">
+      <section className="relative z-20 mt-6 sm:mt-8 md:mt-12 max-w-7xl mx-auto px-4 sm:px-6 mb-8 sm:mb-12 space-y-4 sm:space-y-6">
         
         {/* Statistics Bar */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="bg-[#1F2937] rounded-3xl p-6 md:p-8 shadow-2xl border border-white/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          className="bg-[#1F2937] rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl border border-white/5 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
         >
           {/* Stat 1 */}
-          <div className="flex items-center gap-4">
-            <Building2 className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-[#2D509F] flex-shrink-0" />
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+              <h3 className="font-display text-lg sm:text-2xl md:text-3xl font-black text-white leading-tight">
                 <Counter end={15} suffix="+" />
               </h3>
               <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Showrooms</p>
@@ -162,10 +162,10 @@ export default function Home() {
           </div>
 
           {/* Stat 2 */}
-          <div className="flex items-center gap-4">
-            <Users className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-[#2D509F] flex-shrink-0" />
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+              <h3 className="font-display text-lg sm:text-2xl md:text-3xl font-black text-white leading-tight">
                 <Counter end={100000} suffix="+" />
               </h3>
               <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Happy Customers</p>
@@ -174,10 +174,10 @@ export default function Home() {
           </div>
 
           {/* Stat 3 */}
-          <div className="flex items-center gap-4">
-            <Star className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <Star className="w-6 h-6 sm:w-8 sm:h-8 text-[#2D509F] flex-shrink-0" />
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+              <h3 className="font-display text-lg sm:text-2xl md:text-3xl font-black text-white leading-tight">
                 <Counter end={4.8} decimals={1} suffix="/5" />
               </h3>
               <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Google Rating</p>
@@ -186,10 +186,10 @@ export default function Home() {
           </div>
 
           {/* Stat 4 */}
-          <div className="flex items-center gap-4">
-            <ShieldCheck className="w-8 h-8 text-[#2D509F] flex-shrink-0" />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-[#2D509F] flex-shrink-0" />
             <div>
-              <h3 className="font-display text-2xl md:text-3xl font-black text-white leading-tight">
+              <h3 className="font-display text-lg sm:text-2xl md:text-3xl font-black text-white leading-tight">
                 <Counter end={25} suffix="+" />
               </h3>
               <p className="text-slate-300 text-[10px] uppercase font-bold tracking-wider leading-tight">Years of Trust</p>
@@ -199,21 +199,23 @@ export default function Home() {
         </motion.div>
 
         {/* Quick Link Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           
           {/* Card 1: Compare */}
           <a
             href="#compare"
-            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+            className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center justify-between gap-2 min-h-[72px] sm:min-h-[88px] group relative overflow-hidden"
           >
-            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
-              <Car className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 min-w-0 flex-grow">
+              <div className="p-2 sm:p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+                <Car className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-grow">
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors truncate">Compare</h4>
+                <p className="hidden sm:block text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Compare models side by side</p>
+              </div>
             </div>
-            <div className="flex-grow min-w-0 pr-5">
-              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Compare</h4>
-              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Compare models side by side</p>
-            </div>
-            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+            <div className="w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
               <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -221,16 +223,18 @@ export default function Home() {
           {/* Card 2: EMI Calculator */}
           <a
             href="#finance"
-            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+            className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center justify-between gap-2 min-h-[72px] sm:min-h-[88px] group relative overflow-hidden"
           >
-            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
-              <Calculator className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 min-w-0 flex-grow">
+              <div className="p-2 sm:p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+                <Calculator className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-grow">
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors truncate">EMI Calculator</h4>
+                <p className="hidden sm:block text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Calculate your perfect EMI</p>
+              </div>
             </div>
-            <div className="flex-grow min-w-0 pr-5">
-              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">EMI Calculator</h4>
-              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Calculate your perfect EMI</p>
-            </div>
-            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+            <div className="w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
               <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -238,16 +242,18 @@ export default function Home() {
           {/* Card 3: Exchange */}
           <a
             href="#trade-in"
-            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+            className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center justify-between gap-2 min-h-[72px] sm:min-h-[88px] group relative overflow-hidden"
           >
-            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
-              <ArrowLeftRight className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 min-w-0 flex-grow">
+              <div className="p-2 sm:p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+                <ArrowLeftRight className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-grow">
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors truncate">Exchange</h4>
+                <p className="hidden sm:block text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Get best value for your car</p>
+              </div>
             </div>
-            <div className="flex-grow min-w-0 pr-5">
-              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Exchange</h4>
-              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Get best value for your car</p>
-            </div>
-            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+            <div className="w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
               <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -255,16 +261,18 @@ export default function Home() {
           {/* Card 4: Latest Offers */}
           <a
             href="#offers"
-            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+            className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center justify-between gap-2 min-h-[72px] sm:min-h-[88px] group relative overflow-hidden"
           >
-            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
-              <Tag className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 min-w-0 flex-grow">
+              <div className="p-2 sm:p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+                <Tag className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-grow">
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors truncate">Latest Offers</h4>
+                <p className="hidden sm:block text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Check now for exciting deals</p>
+              </div>
             </div>
-            <div className="flex-grow min-w-0 pr-5">
-              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Latest Offers</h4>
-              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Check now for exciting deals</p>
-            </div>
-            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+            <div className="w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
               <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -272,16 +280,18 @@ export default function Home() {
           {/* Card 5: Book Service */}
           <a
             href="#service"
-            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+            className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center justify-between gap-2 min-h-[72px] sm:min-h-[88px] group relative overflow-hidden"
           >
-            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
-              <Wrench className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 min-w-0 flex-grow">
+              <div className="p-2 sm:p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+                <Wrench className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-grow">
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors truncate">Book Service</h4>
+                <p className="hidden sm:block text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Hassle-free service booking</p>
+              </div>
             </div>
-            <div className="flex-grow min-w-0 pr-5">
-              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Book Service</h4>
-              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Hassle-free service booking</p>
-            </div>
-            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+            <div className="w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
               <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -289,16 +299,18 @@ export default function Home() {
           {/* Card 6: Find Showroom */}
           <a
             href="#showrooms"
-            className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center gap-3.5 h-[88px] group relative overflow-hidden"
+            className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all duration-300 flex items-center justify-between gap-2 min-h-[72px] sm:min-h-[88px] group relative overflow-hidden"
           >
-            <div className="p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
-              <MapPin className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 min-w-0 flex-grow">
+              <div className="p-2 sm:p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-neutral-grey group-hover:text-[#2D509F] transition-colors flex-shrink-0">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-grow">
+                <h4 className="text-[12px] sm:text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors truncate">Find Showroom</h4>
+                <p className="hidden sm:block text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Locate nearest SGA showroom</p>
+              </div>
             </div>
-            <div className="flex-grow min-w-0 pr-5">
-              <h4 className="text-[13px] font-bold text-deep-charcoal leading-snug group-hover:text-[#2D509F] transition-colors">Find Showroom</h4>
-              <p className="text-[10px] text-neutral-grey font-medium leading-tight mt-0.5">Locate nearest SGA showroom</p>
-            </div>
-            <div className="absolute right-3.5 bottom-3.5 w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
+            <div className="w-5 h-5 rounded-full border border-[#2D509F] flex items-center justify-center text-[#2D509F] transition-all group-hover:bg-[#2D509F] group-hover:text-white flex-shrink-0">
               <ChevronRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -323,16 +335,16 @@ export default function Home() {
       />
 
       {/* Book Test Drive Form Section */}
-      <section id="book" ref={bookingFormRef} className="py-24 bg-white border-t border-slate-100 relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section id="book" ref={bookingFormRef} className="py-16 md:py-24 bg-white border-t border-slate-100 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Context Left (7 columns) */}
             <div className="lg:col-span-7 space-y-6">
               <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block">
                 Reserve Your Experience
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-deep-charcoal leading-tight">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-deep-charcoal leading-tight">
                 Schedule A Premium <br />
                 Test Drive Today
               </h2>
@@ -364,7 +376,7 @@ export default function Home() {
 
             {/* Booking Form Card (5 columns) */}
             <div className="lg:col-span-5">
-              <div className="glassmorphism rounded-3xl p-8 relative overflow-hidden bg-white border border-slate-200 shadow-md">
+              <div className="glassmorphism rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden bg-white border border-slate-200 shadow-md">
                 
                 {!bookSuccess ? (
                   <form onSubmit={handleBookSubmit} className="space-y-5">
@@ -480,14 +492,14 @@ export default function Home() {
       <TradeIn />
 
       {/* Latest Offers Section */}
-      <section id="offers" className="py-24 bg-slate-50 border-t border-slate-100 relative">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="offers" className="py-16 md:py-24 bg-slate-50 border-t border-slate-100 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block mb-3">
               Limited Period Deals
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-4 md:mb-6">
               Latest Offers
             </h2>
             <p className="text-neutral-grey text-base">
@@ -559,14 +571,14 @@ export default function Home() {
       </section>
 
       {/* Customer Reviews Section */}
-      <section className="py-24 bg-white border-t border-slate-100 relative">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 md:py-24 bg-white border-t border-slate-100 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           
-          <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
             <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block mb-3">
               Stories of Trust
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-6">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-4 md:mb-6">
               Customer Reviews
             </h2>
             <p className="text-neutral-grey text-base">
@@ -574,7 +586,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             
             {/* Review 1 */}
             <div className="glassmorphism rounded-2xl p-8 space-y-4 bg-white border border-slate-200 shadow-sm">
@@ -645,13 +657,17 @@ export default function Home() {
       <ServiceBooking />
 
       {/* Footer */}
-      <footer className="bg-slate-100 border-t border-slate-200 py-16 text-xs text-neutral-grey">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <footer className="bg-slate-100 border-t border-slate-200 py-10 md:py-16 text-xs text-neutral-grey">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
           
-          <div className="space-y-4">
-            <span className="font-display text-xl font-bold tracking-tight text-deep-charcoal">
-              SGA <span className="text-accent-red">MOTORS</span>
-            </span>
+          <div className="space-y-4 col-span-2 md:col-span-1">
+            <a href="#" className="flex items-center select-none py-1">
+              <img 
+                src="/Logo/logo.png" 
+                alt="SGA Motors TATA Logo" 
+                className="h-10 w-auto object-contain" 
+              />
+            </a>
             <p className="leading-relaxed">
               Authorized Tata Motors dealer in Tamil Nadu. Bringing the latest in high-performance EVs and rugged premium SUVs to the region with certified services.
             </p>
@@ -690,7 +706,7 @@ export default function Home() {
 
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 border-t border-slate-200 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 border-t border-slate-200 mt-8 md:mt-12 pt-6 md:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} SGA Motors Tata. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-deep-charcoal">Privacy Policy</a>

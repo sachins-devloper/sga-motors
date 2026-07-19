@@ -225,18 +225,15 @@ export default function VehicleShowcase({ selectedCars, onToggleCompare, onBookC
   });
 
   return (
-    <section id="cars" className="py-24 bg-white border-t border-slate-100 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="cars" className="py-16 md:py-24 bg-white border-t border-slate-100 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-12">
-          <div>
-            <h2 className="font-display text-3xl font-extrabold text-deep-charcoal tracking-tight">
+        <div className="flex flex-col gap-4 mb-8 md:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-deep-charcoal tracking-tight">
               Explore Our Range
             </h2>
-          </div>
-
-          <div className="flex items-center gap-6 mt-4 md:mt-0">
             {/* View All Link */}
             <a
               href="#cars"
@@ -245,9 +242,11 @@ export default function VehicleShowcase({ selectedCars, onToggleCompare, onBookC
               <span>View All Vehicles</span>
               <ArrowRight className="w-4 h-4" />
             </a>
+          </div>
 
-            {/* Filter Pills */}
-            <div className="flex bg-slate-50 p-1 rounded-full border border-slate-100 max-w-md">
+          {/* Filter Pills - horizontally scrollable on mobile */}
+          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
+            <div className="flex bg-slate-50 p-1 rounded-full border border-slate-100 w-max sm:w-auto">
               {([
                 { key: "all", label: "All" },
                 { key: "suv", label: "SUVs" },
@@ -258,7 +257,7 @@ export default function VehicleShowcase({ selectedCars, onToggleCompare, onBookC
                 <button
                   key={tab.key}
                   onClick={() => setFilter(tab.key)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 ${
+                  className={`px-3 sm:px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 whitespace-nowrap ${
                     filter === tab.key
                       ? "bg-[#2D509F] text-white shadow-sm"
                       : "text-neutral-grey hover:text-deep-charcoal"
@@ -272,7 +271,7 @@ export default function VehicleShowcase({ selectedCars, onToggleCompare, onBookC
         </div>
 
         {/* Vehicle Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           <AnimatePresence mode="popLayout">
             {filteredVehicles.map((vehicle) => {
               const isComparing = selectedCars.includes(vehicle.id);

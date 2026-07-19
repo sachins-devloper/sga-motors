@@ -39,15 +39,15 @@ export default function VehicleComparison({ initialCompareIds, onBookClick }: Co
   ];
 
   return (
-    <section id="compare" className="py-24 bg-white border-t border-slate-100 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="compare" className="py-16 md:py-24 bg-white border-t border-slate-100 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <span className="text-tata-teal font-sans text-xs uppercase tracking-widest font-semibold block mb-3">
             Match Spec-for-Spec
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-charcoal tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal tracking-tight mb-4 md:mb-6">
             Compare Models
           </h2>
           <p className="text-neutral-grey text-base">
@@ -56,7 +56,7 @@ export default function VehicleComparison({ initialCompareIds, onBookClick }: Co
         </div>
 
         {/* Matrix Container */}
-        <div className="glassmorphism rounded-3xl overflow-hidden bg-white border border-slate-200">
+        <div className="glassmorphism rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-slate-200">
           
           {/* Header Row (Selectors) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-b border-slate-200 bg-slate-50">
@@ -151,19 +151,21 @@ export default function VehicleComparison({ initialCompareIds, onBookClick }: Co
                   }`}
                 >
                   {/* Label */}
-                  <div className="p-4 md:p-6 text-zinc-650 font-bold border-b md:border-b-0 md:border-r border-slate-200 flex items-center">
+                  <div className="p-4 md:p-6 text-zinc-650 font-bold border-b md:border-b-0 md:border-r border-slate-200 flex items-center bg-slate-50/40 md:bg-transparent">
                     {isHighlightedRow && <ShieldCheck className="w-4 h-4 text-tata-teal mr-2" />}
                     {spec.label}
                   </div>
 
                   {/* Value A */}
-                  <div className="p-4 md:p-6 text-deep-charcoal border-b md:border-b-0 md:border-r border-slate-200 font-semibold flex items-center">
-                    {valA}
+                  <div className="p-4 md:p-6 text-deep-charcoal border-b md:border-b-0 md:border-r border-slate-200 font-semibold flex items-center justify-between md:justify-start gap-4">
+                    <span className="md:hidden text-neutral-grey text-[10px] uppercase font-bold tracking-wider">{carA.name}:</span>
+                    <span className="text-right md:text-left">{valA}</span>
                   </div>
 
                   {/* Value B */}
-                  <div className="p-4 md:p-6 text-deep-charcoal font-semibold flex items-center">
-                    {valB}
+                  <div className="p-4 md:p-6 text-deep-charcoal font-semibold flex items-center justify-between md:justify-start gap-4">
+                    <span className="md:hidden text-neutral-grey text-[10px] uppercase font-bold tracking-wider">{carB.name}:</span>
+                    <span className="text-right md:text-left">{valB}</span>
                   </div>
                 </div>
               );
