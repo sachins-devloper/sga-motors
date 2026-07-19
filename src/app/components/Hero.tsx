@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-transparent lg:bg-gradient-to-r lg:from-white lg:via-white/95 lg:to-transparent lg:w-[55%] pointer-events-none" />
 
       {/* Main Hero Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center pt-4 md:pt-6 pb-16 lg:pb-28">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start lg:items-center pt-12 sm:pt-16 lg:pt-6 pb-16 lg:pb-28">
         
         {/* Left Side Content (6 columns) */}
         <div className="lg:col-span-6 space-y-4 sm:space-y-6">
