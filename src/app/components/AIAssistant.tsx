@@ -16,6 +16,59 @@ const FAQ_CHIPS = [
   { label: "Book a Test Drive", query: "How do I book a test drive?" },
 ];
 
+// Helper functions to parse basic markdown inside chat messages
+const parseBold = (content: string) => {
+  const parts = content.split(/\*\*([^*]+)\*\*/g);
+  return parts.map((part, idx) => {
+    if (idx % 2 === 1) {
+      return (
+        <strong key={idx} className="font-extrabold text-[#005F56]">
+          {part}
+        </strong>
+      );
+    }
+    return part;
+  });
+};
+
+const renderMarkdown = (text: string) => {
+  const lines = text.split("\n");
+  return lines.map((line, idx) => {
+    const trimmed = line.trim();
+
+    // 1. Headers (e.g. ### Header)
+    if (trimmed.startsWith("### ")) {
+      return (
+        <h5 key={idx} className="font-bold text-xs mt-3 mb-1 text-[#005F56]">
+          {parseBold(trimmed.substring(4))}
+        </h5>
+      );
+    }
+
+    // 2. Unordered lists (e.g. * Item or - Item)
+    if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+      return (
+        <div key={idx} className="flex items-start gap-1.5 ml-2 my-0.5">
+          <span className="text-tata-teal select-none">•</span>
+          <span className="flex-1 text-slate-700">{parseBold(trimmed.substring(2))}</span>
+        </div>
+      );
+    }
+
+    // 3. Spacing for empty lines
+    if (trimmed === "") {
+      return <div key={idx} className="h-1.5" />;
+    }
+
+    // 4. Standard text line
+    return (
+      <p key={idx} className="my-0.5 text-slate-700">
+        {parseBold(line)}
+      </p>
+    );
+  });
+};
+
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [unread, setUnread] = useState<boolean>(true);
@@ -156,13 +209,13 @@ export default function AIAssistant() {
 
                     <div className="max-w-[75%] space-y-2">
                       <div
-                        className={`rounded-2xl px-4 py-3 text-xs leading-relaxed whitespace-pre-line ${
+                        className={`rounded-2xl px-4 py-3 text-xs leading-relaxed whitespace-pre-wrap ${
                           isBot
                             ? "bg-slate-100 text-deep-charcoal border border-slate-200/50"
                             : "bg-tata-teal text-white shadow-sm"
                         }`}
                       >
-                        {msg.text}
+                        {renderMarkdown(msg.text)}
                       </div>
                     </div>
                   </div>

@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-const GEMINI_ENDPOINT =
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
+const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY || "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";
+const NVIDIA_ENDPOINT = "https://integrate.api.nvidia.com/v1/chat/completions";
+const NVIDIA_MODEL = "meta/llama-3.1-8b-instruct";
 
 const SYSTEM_PROMPT = `You are "SGA AI Sales Assistant", the official virtual sales assistant for SGA Motors — an authorized Tata Motors dealership located in Coimbatore, Tamil Nadu, India.
 
@@ -147,8 +147,8 @@ NEVER answer off-topic questions even partially. NEVER say "I don't know but..."
 10. When recommending EVs, mention Tata's charging ecosystem and total cost of ownership benefits.`;
 
 interface ChatMessage {
-  role: "user" | "model";
-  parts: { text: string }[];
+  role: "system" | "user" | "assistant";
+  content: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -166,76 +166,51 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Build conversation history for Gemini
-    const contents: ChatMessage[] = [];
+    const messages: ChatMessage[] = [];
 
-    // Add system instruction as the first user turn
-    contents.push({
-      role: "user",
-      parts: [{ text: SYSTEM_PROMPT }],
-    });
-    contents.push({
-      role: "model",
-      parts: [
-        {
-          text: "Understood. I am the SGA AI Sales Assistant. I will follow all the guidelines provided. How can I help you today?",
-        },
-      ],
+    // Add system instruction
+    messages.push({
+      role: "system",
+      content: SYSTEM_PROMPT,
     });
 
     // Add conversation history
     if (history && Array.isArray(history)) {
       for (const msg of history) {
-        // Skip the initial greeting
-        if (msg.sender === "bot" && contents.length <= 2) continue;
-        contents.push({
-          role: msg.sender === "user" ? "user" : "model",
-          parts: [{ text: msg.text }],
+        // Skip leading model messages to guarantee history is clean
+        if (msg.sender === "bot" && messages.length === 1) continue;
+        
+        messages.push({
+          role: msg.sender === "user" ? "user" : "assistant",
+          content: msg.text,
         });
       }
     }
 
     // Add the current user message
-    contents.push({
+    messages.push({
       role: "user",
-      parts: [{ text: message }],
+      content: message,
     });
 
-    const response = await fetch(`${GEMINI_ENDPOINT}?key=${GEMINI_API_KEY}`, {
+    const response = await fetch(NVIDIA_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${NVIDIA_API_KEY}`,
+      },
       body: JSON.stringify({
-        contents,
-        generationConfig: {
-          temperature: 0.7,
-          topP: 0.9,
-          topK: 40,
-          maxOutputTokens: 300,
-        },
-        safetySettings: [
-          {
-            category: "HARM_CATEGORY_HARASSMENT",
-            threshold: "BLOCK_MEDIUM_AND_ABOVE",
-          },
-          {
-            category: "HARM_CATEGORY_HATE_SPEECH",
-            threshold: "BLOCK_MEDIUM_AND_ABOVE",
-          },
-          {
-            category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-            threshold: "BLOCK_MEDIUM_AND_ABOVE",
-          },
-          {
-            category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-            threshold: "BLOCK_MEDIUM_AND_ABOVE",
-          },
-        ],
+        model: NVIDIA_MODEL,
+        messages,
+        temperature: 0.5,
+        top_p: 0.9,
+        max_tokens: 1024,
       }),
     });
 
     if (!response.ok) {
       const errorData = await response.text();
-      console.error("Gemini API error:", response.status, errorData);
+      console.error("NVIDIA NIM API error:", response.status, errorData);
       return NextResponse.json(
         {
           reply:
@@ -247,7 +222,7 @@ export async function POST(request: NextRequest) {
 
     const data = await response.json();
     const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      data?.choices?.[0]?.message?.content ||
       "I couldn't process that. Could you rephrase your question?";
 
     return NextResponse.json({ reply });
